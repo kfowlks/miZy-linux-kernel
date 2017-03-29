@@ -1,12 +1,12 @@
-# linux kernel 3.4.113+ for Orange Pi Zero board & miZy MODs
+# miZy linux kernel 3.4.113+ for Orange Pi Zero and other sunxi boards 
 
 ## Features
 
 * minimized for size- remove not used systems like hdmi and many other
 * enable onboard SPI flash full support 
 * onboard WiFi xr819 - xradio_wlan
-* kernel lzma compression, and additional gzip variant
-* initrd compression any from gzip lzma lzo xz
+* build uncompressed kernel, and after kernel packed as uboot image with any LZMA GZIP LZO NONE compression
+* initrd compression LZMA GZIP LZO XZ 
 * some systems builded as module for more flexibility
     * i2c 
     * audio
