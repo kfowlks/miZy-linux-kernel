@@ -1,0 +1,12 @@
+#!/bin/sh
+
+## hyphop ##
+
+. ./,config
+
+./kernel_dirs
+
+echo "$kernel_path modules"
+
+make -C $kernel_path $kernel_build_args modules
+

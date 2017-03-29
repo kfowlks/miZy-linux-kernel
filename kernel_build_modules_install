@@ -1,0 +1,20 @@
+#!/bin/sh
+
+## hyphop ##
+
+. ./,config
+
+./kernel_dirs
+
+echo "$kernel_path modules => $mod_path"
+
+make -C $kernel_path $kernel_build_args modules_install \
+    INSTALL_MOD_PATH=$mod_path \
+1>$logs/modules.log 2>$logs/modules.err
+
+[ -d $mod_out_links ] || mkdir $mod_out_links
+[ -d $mod_out ] || mkdir $mod_out
+
+#find $mod_path -name \*.ko -exec  cp {} $mod_out \;
+find $mod_path -name \*.ko -exec  ln {} $mod_out \;
+find $mod_path -name \*.ko -exec  ln -s {} $mod_out_links \;
