@@ -11,7 +11,8 @@ kernel_path=$src
 add=kernel-files
 patches=kernel-patches
 
-mod_path=$bdir/bin/modules
+mod_rpath=bin/modules
+mod_path=$bdir/$mod_rpath
 mod_out=bin/modules.all
 mod_out_links=bin/modules.links
 kernel_out=bin
@@ -21,6 +22,10 @@ kernel_cmp="gzip lzma"
 kernel_build_args="-j 16"
 
 logs=logs
+
+kernel_log_out="$logs/kernel.log"
+kernel_err_out="$logs/kernel.err"
+
 
 kernel_path=linux-sun8i/sun8i
 kernel_path=$src
