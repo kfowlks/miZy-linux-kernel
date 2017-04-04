@@ -4,6 +4,17 @@
 
 . ./,config
 
+[ -f $src/._PREPARED_ ] && {
+    echo "[i] prepared already!!!
+
+NEXT:
+    ./kernel_build_all
+" 1>&2;
+
+    exit 0
+}
+
+
 [ -d logs ] || mkdir logs
 
 [ -s $src/Makefile ] || {
@@ -56,5 +67,14 @@ cat ../$patches/*.patch | patch -p1
 cp -a ../$add/* .
 cd ..
 
-./kernel_defconfig
+
+./kernel_defconfig && {
+    echo 1 > $src/._PREPARED_
+    echo "[i] ok source is prepared
+
+NEXT:
+    ./kernel_build_all
+" 1>&2
+
+}
 
